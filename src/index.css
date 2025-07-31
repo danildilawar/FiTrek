@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+
+@layer utilities {
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+  .font-outfit {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-gradient-soft dark:bg-gradient-soft-dark text-gray-900 dark:text-gray-100 font-outfit pb-[80px] transition-all duration-500;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins;
+  }
+
+  p, span, div, input, select, button {
+    @apply font-outfit;
+  }
+
+  /* Prevent text overflow on all screen sizes */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* iOS safe area support */
+  @supports (padding: max(0px)) {
+    body {
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
+    }
+  }
+
+  /* High DPI display optimization */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .icon-crisp {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-2xl shadow-soft p-3 xs:p-4 sm:p-6 transition-all duration-300 hover:shadow-medium hover:scale-[1.01] border border-white/30 dark:border-gray-700/50 animate-fade-in;
+  }
+  
+  .nav-item {
+    @apply flex flex-col items-center py-2 xs:py-3 px-2 xs:px-4 text-xs xs:text-sm font-semibold transition-all duration-500 ease-out;
+  }
+  
+  .nav-item-active {
+    @apply text-primary scale-105 transform shadow-glow;
+  }
+  
+  .nav-item-inactive {
+    @apply text-gray-500 dark:text-gray-400 hover:text-primary hover:scale-105 transform;
+  }
+  
+  .input-field {
+    @apply w-full px-3 xs:px-4 py-2.5 xs:py-3 sm:px-6 sm:py-3.5 rounded-2xl border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300 text-sm xs:text-base dark:bg-gray-800/90 dark:text-gray-100 shadow-soft backdrop-blur-md resize-none;
+  }
+  
+  .button-primary {
+    @apply bg-gradient-to-r from-primary to-blue-500 text-white font-semibold py-2.5 xs:py-3 px-3 xs:px-4 sm:py-3.5 sm:px-6 rounded-2xl hover:from-primary/90 hover:to-blue-500/90 transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs xs:text-sm sm:text-base shadow-soft hover:shadow-medium hover:shadow-glow active:shadow-soft;
+  }
+  
+  .button-secondary {
+    @apply bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-200 font-semibold py-2.5 xs:py-3 px-3 xs:px-4 sm:py-3.5 sm:px-6 rounded-2xl hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs xs:text-sm sm:text-base shadow-soft hover:shadow-medium active:shadow-soft border border-gray-300 dark:border-gray-600;
+  }
+  
+  .button-danger {
+    @apply bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold py-2 px-3 xs:py-2.5 xs:px-4 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs xs:text-sm shadow-soft hover:shadow-medium active:shadow-soft;
+  }
+  
+  .button-icon {
+    @apply p-1.5 xs:p-2 sm:p-2.5 rounded-xl bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-600 dark:text-gray-300 hover:from-primary/10 hover:to-primary/20 dark:hover:from-primary/20 dark:hover:to-primary/30 hover:text-primary dark:hover:text-primary transition-all duration-300 transform hover:scale-110 active:scale-95 shadow-soft hover:shadow-medium active:shadow-soft;
+  }
+
+  /* Loading animations */
+  .loading-shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .loading-shimmer::after {
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer;
+    content: '';
+  }
+
+  /* Success animations */
+  .success-glow {
+    @apply animate-pulse shadow-glow-lg;
+  }
+
+  /* Mobile-first responsive text */
+  .responsive-text {
+    @apply text-sm xs:text-base sm:text-lg;
+  }
+
+  .responsive-heading {
+    @apply text-lg xs:text-xl sm:text-2xl;
+  }
+
+  .responsive-title {
+    @apply text-xl xs:text-2xl sm:text-3xl;
+  }
+}
